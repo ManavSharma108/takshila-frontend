@@ -8,11 +8,11 @@ import SecondSlider from "../components/SecondSlider";
 export default function Home() {
   return (
     <div>
+      <VideoSection />
       <HeroSlider />
+      <SecondSlider />
       <ExperienceSection />
       <StoriesSection />
-      <VideoSection />
-      <SecondSlider />
     </div>
   );
 }
