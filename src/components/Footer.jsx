@@ -197,8 +197,8 @@ export default function Footer({ theme: propTheme }) {
                 <button
                   className={`px-4 rounded-r-lg transition ${
                     isDark
-                      ? "bg-white text-black hover:bg-gray-200"
-                      : "bg-black text-white hover:bg-gray-800"
+                      ? "bg-black text-black hover:bg-gray-800"
+                      : "bg-white text-white hover:bg-gray-200"
                   }`}
                 >
                   <img
