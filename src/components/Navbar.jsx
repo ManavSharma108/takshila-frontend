@@ -9,11 +9,10 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showAboutMenu, setShowAboutMenu] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
   const [modalOpen, setModalOpen] = useState(false);
   const [modalType, setModalType] = useState("login");
 
-  // 🔹 Refs for outside click detection
+  // 🔹 Refs for click-outside detection
   const profileRef = useRef(null);
   const searchRef = useRef(null);
   const aboutRef = useRef(null);
@@ -27,14 +26,14 @@ export default function Navbar() {
 
   const handleCloseModal = () => setModalOpen(false);
 
-  // 🔹 Navbar scroll effect
+  // 🔹 Navbar scroll blur
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // 🔹 Close dropdowns when clicking outside
+  // 🔹 Click outside handler
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (aboutRef.current && !aboutRef.current.contains(event.target))
@@ -70,6 +69,7 @@ export default function Navbar() {
 
   return (
     <>
+      {/* 🔹 Navbar Header */}
       <header
         className={`fixed top-0 left-0 w-full flex justify-center px-8 py-4 z-50 transition-all duration-500 ${
           isScrolled
@@ -78,12 +78,12 @@ export default function Navbar() {
         }`}
       >
         <div className="flex items-center justify-between w-full max-w-6xl space-x-6 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-lg transition-all duration-500">
-          {/* 🔹 Logo */}
+          {/* Logo */}
           <div>
             <img src="assets/logo.png" alt="Logo" className="h-8" />
           </div>
 
-          {/* 🔹 Desktop Navigation */}
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-6 text-sm font-medium text-white">
             {[
               { name: "Home", path: "/" },
@@ -104,7 +104,7 @@ export default function Navbar() {
               </Link>
             ))}
 
-            {/* 🔹 About Us Dropdown */}
+            {/* About Us Dropdown */}
             <div ref={aboutRef} className="relative about-dropdown">
               <button
                 onClick={() => setShowAboutMenu(!showAboutMenu)}
@@ -118,6 +118,7 @@ export default function Navbar() {
                 About Us ▾
               </button>
 
+              {/* Dropdown */}
               <div
                 className={`absolute left-0 mt-2 w-44 rounded-lg border border-white/20 backdrop-blur-xl bg-white/90 text-gray-800 shadow-lg z-50 transition-all duration-300 ease-in-out transform origin-top ${
                   showAboutMenu
@@ -151,7 +152,7 @@ export default function Navbar() {
             </div>
           </nav>
 
-          {/* 🔹 Desktop Buttons & Search/Profile */}
+          {/* Desktop Actions */}
           <div className="hidden md:flex items-center space-x-3">
             <button className="bg-white/10 hover:bg-white/20 text-white px-4 py-1 rounded-full backdrop-blur-md transition text-sm">
               Ai Designer
@@ -160,7 +161,7 @@ export default function Navbar() {
               + Your Design
             </button>
 
-            {/* 🔍 Search Popup (Glassy Style) */}
+            {/* 🔍 Glassy Search Popup */}
             <div ref={searchRef} className="relative">
               <button
                 onClick={() => setShowSearch(!showSearch)}
@@ -209,7 +210,7 @@ export default function Navbar() {
               </span>
             </button>
 
-            {/* 👤 Profile */}
+            {/* 👤 Profile Dropdown */}
             <div ref={profileRef} className="relative">
               <button
                 onClick={() => setShowProfileMenu(!showProfileMenu)}
@@ -240,8 +241,83 @@ export default function Navbar() {
               )}
             </div>
           </div>
+
+          {/* 🔹 Mobile Menu Icon */}
+          <div className="md:hidden flex items-center space-x-2">
+            <Link
+              to="/favorites"
+              className="p-2 rounded-full hover:bg-white/10 transition"
+            >
+              <img
+                src="assets/heart.svg"
+                alt="Heart"
+                className="h-6 w-6 invert"
+              />
+            </Link>
+            <Link
+              to="/cart"
+              className="relative p-2 rounded-full hover:bg-white/10 transition"
+            >
+              <img
+                src="assets/cart.svg"
+                alt="Cart"
+                className="h-6 w-6 invert"
+              />
+              <span className="absolute -top-1 -right-1 bg-red-500 text-[10px] rounded-full px-1">
+                0
+              </span>
+            </Link>
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 rounded-full hover:bg-white/10 transition"
+            >
+              <img
+                src={isMobileMenuOpen ? "assets/close.svg" : "assets/menu.svg"}
+                alt="Menu"
+                className="h-6 w-6 invert"
+              />
+            </button>
+          </div>
         </div>
       </header>
+
+      {/* 🔹 Mobile Dropdown Menu */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 z-40 flex flex-col items-end justify-start pt-24 pr-8 backdrop-blur-sm bg-black/30 transition-all duration-500">
+          {mobileItems.map((item, idx) => (
+            <Link
+              key={idx}
+              to={item.path}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`text-right text-white text-lg font-medium px-6 py-2 mb-4 rounded-full border border-white/20 
+                         bg-white/10 backdrop-blur-md transition-all w-fit
+                         ${
+                           isActive(item.path)
+                             ? "shadow-[0_0_20px_rgba(255,255,255,0.8)] text-white font-semibold"
+                             : "hover:bg-white/20 shadow-[0_4px_20px_rgba(255,255,255,0.1)]"
+                         }`}
+            >
+              {item.name}
+            </Link>
+          ))}
+
+          {/* Bottom Buttons */}
+          <div className="absolute bottom-10 right-8 flex gap-4">
+            <button
+              onClick={() => handleOpenModal("login")}
+              className="px-6 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-base hover:bg-white/20 transition"
+            >
+              Login
+            </button>
+            <button
+              onClick={() => handleOpenModal("signup")}
+              className="px-6 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-base hover:bg-white/20 transition"
+            >
+              Sign up
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* 🔹 Auth Modals */}
       <AuthModals
