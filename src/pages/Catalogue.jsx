@@ -1,14 +1,62 @@
 import React, { useState } from "react";
 
 const products = [
-  { id: 1, name: "Aria Dawn", price: 3200, stock: true, image: "assets/jewel1.jpg" },
-  { id: 2, name: "Aurora Halo", price: 4800, stock: true, image: "assets/jewel2.jpg" },
-  { id: 3, name: "Aurora Spark", price: 5500, stock: false, image: "assets/jewel3.jpg" },
-  { id: 4, name: "Celeste Ring", price: 6100, stock: true, image: "assets/jewel4.jpg" },
-  { id: 5, name: "Golden Dream", price: 4500, stock: true, image: "assets/jewel5.jpg" },
-  { id: 6, name: "Serenity Band", price: 2400, stock: false, image: "assets/jewel6.jpg" },
-  { id: 7, name: "Luna Glow", price: 3700, stock: true, image: "assets/jewel7.jpg" },
-  { id: 8, name: "Radiant Whisper", price: 5200, stock: true, image: "assets/jewel8.jpg" },
+  {
+    id: 1,
+    name: "Aria Dawn",
+    price: 3200,
+    stock: true,
+    image: "assets/jewel1.jpg",
+  },
+  {
+    id: 2,
+    name: "Aurora Halo",
+    price: 4800,
+    stock: true,
+    image: "assets/jewel2.jpg",
+  },
+  {
+    id: 3,
+    name: "Aurora Spark",
+    price: 5500,
+    stock: false,
+    image: "assets/jewel3.jpg",
+  },
+  {
+    id: 4,
+    name: "Celeste Ring",
+    price: 6100,
+    stock: true,
+    image: "assets/jewel4.jpg",
+  },
+  {
+    id: 5,
+    name: "Golden Dream",
+    price: 4500,
+    stock: true,
+    image: "assets/jewel5.jpg",
+  },
+  {
+    id: 6,
+    name: "Serenity Band",
+    price: 2400,
+    stock: false,
+    image: "assets/jewel6.jpg",
+  },
+  {
+    id: 7,
+    name: "Luna Glow",
+    price: 3700,
+    stock: true,
+    image: "assets/jewel7.jpg",
+  },
+  {
+    id: 8,
+    name: "Radiant Whisper",
+    price: 5200,
+    stock: true,
+    image: "assets/jewel8.jpg",
+  },
 ];
 
 export default function Catalogue() {
@@ -37,47 +85,42 @@ export default function Catalogue() {
 
   return (
     <>
-      <div className="relative bg-black min-h-screen text-white pt-40 px-6 md:px-12 lg:px-20 pb-24 overflow-hidden">
-        {/* Ambient White Glow Background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-transparent blur-3xl opacity-50 pointer-events-none"></div>
-
+      <div className="bg-[#e5e2df] min-h-screen text-[#1a1a1a] pt-40 px-6 md:px-12 lg:px-20 pb-24 transition-all duration-500">
         {/* Header */}
-        <section className="text-center mb-16 relative z-10">
-          <h1 className="text-5xl md:text-5xl font-serif font-light tracking-wide text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.5)]">
+        <section className="text-center mb-12">
+          <h1 className="text-5xl md:text-5xl font-serif font-light tracking-wide text-[#1a1a1a]">
             PRODUCTS
           </h1>
-          <p className="text-sm mt-2 text-gray-400 mb-24 drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
-            <span className="text-white/50">Home</span> &nbsp;›&nbsp; Products
+          <p className="text-sm mt-2 text-gray-600 mb-24">
+            <span className="text-gray-500">Home</span> &nbsp;›&nbsp; Products
           </p>
         </section>
 
         {/* Main Layout */}
-        <div className="flex flex-col lg:flex-row gap-12 relative z-10">
+        <div className="flex flex-col lg:flex-row gap-12">
           {/* Sidebar */}
           <aside className="w-full lg:w-1/4 space-y-10">
             {/* Availability */}
-            <div className="p-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl 
-                            shadow-[0_0_25px_rgba(255,255,255,0.1)] hover:shadow-[0_0_45px_rgba(255,255,255,0.4)]
-                            transition-all duration-500">
-              <h3 className="text-lg font-semibold uppercase mb-4 tracking-wide text-white/70">
+            <div>
+              <h3 className="text-lg font-semibold uppercase mb-4 tracking-wide text-gray-800">
                 AVAILABILITY
               </h3>
-              <div className="space-y-3 text-white/60 text-sm">
-                <label className="flex items-center gap-2 hover:text-white transition">
+              <div className="space-y-3 text-gray-700 text-sm">
+                <label className="flex items-center gap-2">
                   <input
                     type="checkbox"
                     checked={inStock}
                     onChange={() => setInStock(!inStock)}
-                    className="accent-white scale-110"
+                    className="accent-[#2E4B45] scale-110"
                   />
                   In stock
                 </label>
-                <label className="flex items-center gap-2 hover:text-white transition">
+                <label className="flex items-center gap-2">
                   <input
                     type="checkbox"
                     checked={outOfStock}
                     onChange={() => setOutOfStock(!outOfStock)}
-                    className="accent-[#b6795c] scale-110"
+                    className="accent-[#2E4B45] scale-110"
                   />
                   Out of stock
                 </label>
@@ -85,10 +128,8 @@ export default function Catalogue() {
             </div>
 
             {/* Price */}
-            <div className="p-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl 
-                            shadow-[0_0_25px_rgba(255,255,255,0.1)] hover:shadow-[0_0_45px_rgba(255,255,255,0.4)]
-                            transition-all duration-500">
-              <h3 className="text-lg font-semibold uppercase mb-4 tracking-wide text-white/70">
+            <div>
+              <h3 className="text-lg font-semibold uppercase mb-4 tracking-wide text-gray-800">
                 PRICE
               </h3>
               <input
@@ -97,9 +138,9 @@ export default function Catalogue() {
                 max="6500"
                 value={priceRange[1]}
                 onChange={handlePriceChange}
-                className="w-full accent-[#b6795c]"
+                className="w-full accent-[#2E4B45]"
               />
-              <p className="text-white/50 text-sm mt-2">
+              <p className="text-gray-600 text-sm mt-2">
                 Price: ${priceRange[0].toFixed(2)} — ${priceRange[1].toFixed(2)}
               </p>
             </div>
@@ -112,31 +153,23 @@ export default function Catalogue() {
               <select
                 value={sortOrder}
                 onChange={(e) => setSortOrder(e.target.value)}
-                className="border border-gray-600 bg-white/10 backdrop-blur-md text-white text-sm rounded-full px-5 py-2 
-                           focus:outline-none hover:border-white/50 shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:shadow-[0_0_25px_rgba(255,255,255,0.4)]
-                           transition-all duration-500"
+                className="border border-gray-400 bg-white rounded-full px-5 py-2 text-sm text-gray-700 focus:outline-none hover:border-gray-600"
               >
-                <option value="az" className="text-black">Alphabetically, A–Z</option>
-                <option value="za" className="text-black">Alphabetically, Z–A</option>
-                <option value="lowhigh" className="text-black">Price: Low to High</option>
-                <option value="highlow" className="text-black">Price: High to Low</option>
+                <option value="az">Alphabetically, A–Z</option>
+                <option value="za">Alphabetically, Z–A</option>
+                <option value="lowhigh">Price: Low to High</option>
+                <option value="highlow">Price: High to Low</option>
               </select>
 
-              {/* Layout Icons */}
+              {/* Layout Icons (mockup only) */}
               <div className="flex gap-3">
-                <button className="w-8 h-8 border border-gray-500 rounded-full flex items-center justify-center 
-                                   hover:bg-white/10 text-gray-400 hover:text-white transition-all 
-                                   shadow-[0_0_10px_rgba(255,255,255,0.1)] hover:shadow-[0_0_25px_rgba(255,255,255,0.4)] duration-500">
+                <button className="w-8 h-8 border border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-100">
                   Ⅱ
                 </button>
-                <button className="w-8 h-8 border border-[#b6795c] bg-[#b6795c]/80 text-white rounded-full 
-                                   flex items-center justify-center shadow-[0_0_15px_rgba(182,121,92,0.7)] hover:shadow-[0_0_25px_rgba(182,121,92,1)]
-                                   transition-all duration-500">
+                <button className="w-8 h-8 border border-gray-400 bg-[#2E4B45] text-white rounded-full flex items-center justify-center">
                   Ⅲ
                 </button>
-                <button className="w-8 h-8 border border-gray-500 rounded-full flex items-center justify-center 
-                                   hover:bg-white/10 text-gray-400 hover:text-white transition-all 
-                                   shadow-[0_0_10px_rgba(255,255,255,0.1)] hover:shadow-[0_0_25px_rgba(255,255,255,0.4)] duration-500">
+                <button className="w-8 h-8 border border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-100">
                   ☰
                 </button>
               </div>
@@ -147,32 +180,29 @@ export default function Catalogue() {
               {filteredProducts.map((item) => (
                 <div
                   key={item.id}
-                  className="flex flex-col items-center text-center group transition-all"
+                  className="flex flex-col items-center text-center"
                 >
-                  <div className="relative w-full bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl 
-                                  shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:shadow-[0_0_80px_rgba(255,255,255,0.9)]
-                                  p-4 transition-all duration-700">
-                    {/* Image Glow */}
-                    <div className="absolute inset-0 rounded-2xl bg-white/10 opacity-0 group-hover:opacity-100 blur-2xl transition-all duration-700"></div>
+                  <div className="w-full bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 p-4">
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-full h-56 object-cover rounded-xl transform group-hover:scale-[1.05] transition-transform duration-700"
+                      className="w-full h-56 object-cover rounded-xl"
                     />
                   </div>
 
-                  <h2 className="text-sm font-semibold mt-4 tracking-wide text-white/80 uppercase group-hover:text-white transition">
+                  <h2 className="text-sm font-semibold mt-4 tracking-wide text-gray-800 uppercase">
                     {item.name}
                   </h2>
 
-                  <p className="text-white/60 text-sm mt-1">${item.price.toFixed(2)}</p>
+                  <p className="text-gray-600 text-sm mt-1">
+                    ${item.price.toFixed(2)}
+                  </p>
 
                   <button
-                    className={`mt-3 px-5 py-2 text-sm rounded-full transition-all duration-700 
-                      shadow-[0_0_10px_rgba(255,255,255,0.2)] hover:shadow-[0_0_25px_rgba(255,255,255,0.6)] ${
+                    className={`mt-3 px-5 py-2 text-sm rounded-full transition-all ${
                       item.stock
-                        ? "bg-[#123b36] hover:bg-[#1d5049] text-white"
-                        : "bg-gray-700/40 text-gray-500 cursor-not-allowed"
+                        ? "bg-[#2E4B45] hover:bg-[#1f332e] text-white"
+                        : "bg-gray-300 text-gray-500 cursor-not-allowed"
                     }`}
                   >
                     {item.stock ? "Buy Now" : "Out of Stock"}
@@ -183,7 +213,7 @@ export default function Catalogue() {
 
             {/* Empty State */}
             {filteredProducts.length === 0 && (
-              <p className="text-center text-gray-400 mt-20 text-sm">
+              <p className="text-center text-gray-500 mt-20 text-sm">
                 No products match your filters.
               </p>
             )}

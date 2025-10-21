@@ -72,12 +72,10 @@ export default function Navbar() {
       {/* 🔹 Navbar Header */}
       <header
         className={`fixed top-0 left-0 w-full flex justify-center px-8 py-4 z-50 transition-all duration-500 ${
-          isScrolled
-            ? "backdrop-blur-xl bg-black/30 border-b border-white/10 shadow-lg"
-            : "bg-transparent"
+          isScrolled ? "bg-transparent" : "bg-transparent"
         }`}
       >
-        <div className="flex items-center justify-between w-full max-w-6xl space-x-6 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-lg transition-all duration-500">
+        <div className="flex items-center justify-between w-full max-w-6xl space-x-6 px-4 py-2 rounded-full bg-[#2E4B45]/60 backdrop-blur-md border border-white/30 shadow-lg transition-all duration-500">
           {/* Logo */}
           <div>
             <img src="assets/logo.png" alt="Logo" className="h-8" />
@@ -170,7 +168,7 @@ export default function Navbar() {
                 <img
                   src="assets/search.svg"
                   alt="Search"
-                  className="h-5 w-5 invert"
+                  className="h-5 w-5"
                 />
               </button>
 
@@ -203,7 +201,7 @@ export default function Navbar() {
               <img
                 src="assets/cart.svg"
                 alt="Cart"
-                className="h-5 w-5 invert"
+                className="h-5 w-5"
               />
               <span className="absolute -top-2 -right-2 bg-red-500 text-xs rounded-full px-1">
                 0
@@ -219,7 +217,7 @@ export default function Navbar() {
                 <img
                   src="assets/profile.svg"
                   alt="Profile"
-                  className="h-5 w-5 invert"
+                  className="h-5 w-5"
                 />
               </button>
 
