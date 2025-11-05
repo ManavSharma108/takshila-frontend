@@ -41,7 +41,7 @@ export default function AuthModals({ isOpen, type, onClose, switchType }) {
       console.log(data);
       if (data.success) {
         toast.success("Logging you in");
-        window.location.reload();
+      
       } else {
         toast.error(data.message);
       }
