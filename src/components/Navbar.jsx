@@ -20,7 +20,7 @@ export default function Navbar() {
       try {
         console.log("in")
         axios.defaults.withCredentials=true
-        const {data}=axios.get(`${import.meta.env.VITE_BASE_URL}/api/auth/check`);
+        const {data}=await axios.get(`${import.meta.env.VITE_BASE_URL}/api/auth/check`);
         console.log(data)
       } catch (error) {
         console.log(error)
