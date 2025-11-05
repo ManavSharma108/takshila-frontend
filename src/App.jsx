@@ -24,7 +24,7 @@ export default function App() {
   }
   return (
     <div className="bg-[#111] text-white min-h-screen">
-      <button className="cursor-pointer p-4 bg-blue-500" onClick={check}>CHECK AUTH</button>
+      <button className="cursor-pointer z-100 p-4 bg-blue-500" onClick={check}>CHECK AUTH</button>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
