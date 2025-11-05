@@ -14,6 +14,7 @@ import axios from "axios"
 export default function App() {
   const check=async(e)=>{
     try {
+      console.log("in")
       axios.defaults.withCredentials=true
       const {data}=axios.get(`${import.meta.env.VITE_BASE_URL}/api/auth/check`);
       console.log(data)
@@ -23,7 +24,7 @@ export default function App() {
   }
   return (
     <div className="bg-[#111] text-white min-h-screen">
-      <button onClick={check}>CHECK AUTH</button>
+      <button className="cursor-pointer p-4 bg-blue-500" onClick={check}>CHECK AUTH</button>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
