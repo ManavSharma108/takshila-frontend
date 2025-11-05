@@ -29,14 +29,14 @@ export default function AuthModals({ isOpen, type, onClose, switchType }) {
 
   const handleLogin = async (e) => {
     try {
-      axios.defaults.withCredentials = true;
       e.preventDefault();
+      axios.defaults.withCredentials = true;
       const formData = new FormData(e.target); // e.target = form
       const values = Object.fromEntries(formData.entries());
       console.log(values);
       const { data } = await axios.post(
         `${import.meta.env.VITE_BASE_URL}/login`,
-        values
+        values,{withCredentials:true}
       );
       console.log(data);
       if (data.success) {
