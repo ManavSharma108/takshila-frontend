@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import React, { useState, useEffect, useRef } from "react";
 import AuthModals from "./AuthModals";
-
+import axios from "axios"
 export default function Navbar() {
   const location = useLocation();
   const [showSearch, setShowSearch] = useState(false);
@@ -16,7 +16,16 @@ export default function Navbar() {
   const profileRef = useRef(null);
   const searchRef = useRef(null);
   const aboutRef = useRef(null);
-
+  const check=async(e)=>{
+      try {
+        console.log("in")
+        axios.defaults.withCredentials=true
+        const {data}=axios.get(`${import.meta.env.VITE_BASE_URL}/api/auth/check`);
+        console.log(data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
   const handleOpenModal = (type) => {
     setModalType(type);
     setModalOpen(true);
@@ -83,6 +92,8 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-6 text-sm font-medium text-white">
+                        <button className="cursor-pointer z-100 p-4 bg-blue-500" onClick={check}>CHECK AUTH</button>
+
             {[
               { name: "Home", path: "/" },
               { name: "Community", path: "/community" },
